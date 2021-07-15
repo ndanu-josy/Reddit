@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title></title>
-  </head>
-  <body>
- 
+</head>
+
+<body>
+    {%extends 'base.html'%}
+    {%load bootstrap3%}
     {% block content %}
     <h1>New Post</h1>
 
@@ -14,19 +17,23 @@
     <br><br>
     {% endif %}
 
-    <form method="POST" action="{% url 'create' %}">
-      {% csrf_token %}
+    <div class="container">
+        <form method="POST" action="{% url 'create' %}">
+            <div class="form-group">
+                <label for="email">Title:</label>
+                <br>
+                <input type="title" class="form-control" id="title">
+            </div>
+            <div class="form-group">
+                <label for="pwd">URL:</label>
+                <br>
+                <input type="url" class="form-control" id="url">
+            </div>
 
-      Title:
-      <br>
-      <input type="text" name="title">
-      <br>
-      URL
-      <br>
-      <input type="text" name="url">
-      <br><br>
-      <input class="btn btn-primary" type="submit" value="Post">
-    </form>
-    {% endblock %}
-  </body>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      
+    </div>
+</body>
+{% endblock %}
 </html>
